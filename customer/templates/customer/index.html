@@ -1,0 +1,36 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+<div class="container text-center">
+  <h1 class="my-5">Energy Consumption</h1>
+  <p>
+    Below displays customers’ personal and consumption details in table format.
+  </p>
+  <nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-center my-3">
+      <li class="page-item"><a class="page-link" href="/">Home</a></li>
+      <li class="page-item">
+        <a class="page-link" href="{% url 'customer1' %}">Customer 1</a>
+      </li>
+      <li class="page-item">
+        <a class="page-link" href="{% url 'customer2' %}">Customer 2</a>
+      </li>
+      <li class="page-item">
+        <a class="page-link" href="{% url 'customer3' %}">Customer 3</a>
+      </li>
+      <li class="page-item">
+        <a class="page-link" href="{% url 'customer4' %}">Customer 4</a>
+      </li>
+    </ul>
+  </nav>
+</div>
+
+<div class="container w-50">
+  <form action="{% url 'customer1' %}" method="POST" class="my-5">
+    {% csrf_token %}
+    <button type="submit" name="mybtn2" class="btn btn-danger btn-sm">
+      Customer with the Highest "Day Rate", "Night Rate" and "Total Energy Cost"
+      Consumption
+    </button>
+  </form>
+</div>
+
+{% endblock %}

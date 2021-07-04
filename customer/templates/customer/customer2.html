@@ -1,0 +1,140 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+<div class="container">
+  <nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-center mt-3">
+      <li class="page-item"><a class="page-link" href="/">Home</a></li>
+      <li class="page-item">
+        <a class="page-link" href="{% url 'customer1' %}">Customer 1</a>
+      </li>
+      <li class="page-item">
+        <a class="page-link" href="{% url 'customer2' %}">Customer 2</a>
+      </li>
+      <li class="page-item">
+        <a class="page-link" href="{% url 'customer3' %}">Customer 3</a>
+      </li>
+      <li class="page-item">
+        <a class="page-link" href="{% url 'customer4' %}">Customer 4</a>
+      </li>
+    </ul>
+  </nav>
+
+  <h1 class="my-5 text-center">Customer Details</h1>
+
+  <table class="table w-50">
+    <tbody>
+      <tr>
+        <th scope="row">Customer Name</th>
+        <td>{{cust_name}}</td>
+      </tr>
+      <tr>
+        <th scope="row">Customer address</th>
+        <td>{{cust_add}}</td>
+      </tr>
+      <tr>
+        <th scope="row">Meter Number</th>
+        <td>{{cust_meter}}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <table class="table my-5">
+    <tbody>
+      <thead>
+        <tr>
+          <th scope="col">Rate Name</th>
+          <th scope="col">1st Reading (KWh)</th>
+          <th scope="col">2nd Reading</th>
+        </tr>
+      </thead>
+      <tr>
+        <td>Day Rate</td>
+        <td>{{cust_day1}}</td>
+        <td>{{cust_day2}}</td>
+      </tr>
+      <tr>
+        <td>Night Rate</td>
+        <td>{{cust_night1}}</td>
+        <td>{{cust_night2}}</td>
+      </tr>
+      <tr>
+        <td>Weekend Rate</td>
+        <td>{{cust_weekend1}}</td>
+        <td>{{cust_weekend2}}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <table class="table my-5">
+    <tbody>
+      <thead>
+        <tr>
+          <th scope="col">Rate Name</th>
+          <th scope="col">Price (£/kWh)</th>
+        </tr>
+      </thead>
+      <tr>
+        <td>Day Rate</td>
+        <td>{{day_rate}}</td>
+      </tr>
+      <tr>
+        <td>Night Rate</td>
+        <td>{{night_rate}}</td>
+      </tr>
+      <tr>
+        <td>Weekend Rate</td>
+        <td>{{weekend_rate}}</td>
+      </tr>
+      <tr>
+        <td>Weekend Day Rate</td>
+        <td>{{weekend_day_rate}}</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="text-center">
+    <h1>Customer Consumption</h1>
+    <p class="mt-3">Energy Consumption = 2nd Reading - 1st Reading</p>
+    <p class="mb-5">Cost Consumption = Energy Consumption * Rate Price</p>
+  </div>
+  <div class="row my-5">
+    <div class="col-6">
+      <table class="table">
+        <tbody>
+          <tr>
+            <td>Energy consumption for Day Rate = {{ec_day_rate}}</td>
+          </tr>
+          <tr>
+            <td>Energy consumption for Night Rate = {{ec_night_rate}}</td>
+          </tr>
+          <tr>
+            <td>Energy consumption for Weekend Rate = {{ec_weekend_rate}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-6">
+      <table class="table">
+        <tbody>
+          <tr>
+            <td>Cost for Day Rate consumption = {{cost_day_rate}}</td>
+          </tr>
+          <tr>
+            <td>Cost for Night Rate consumption = {{cost_night_rate}}</td>
+          </tr>
+          <tr>
+            <td>Cost for Weekend Rate consumption = {{cost_weekend_rate}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-12">
+      <table class="table text-center">
+        <tbody>
+          <tr>
+            <td>Total Energy Cost = {{total_cost}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+{% endblock %}
